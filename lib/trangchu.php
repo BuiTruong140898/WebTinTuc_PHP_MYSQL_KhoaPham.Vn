@@ -80,4 +80,24 @@ function HienQuangCao($vitri) {
     $result = mysqli_query($conn, $qr);
     return $result;
 }
+
+function LayDanhSachTheloai() {
+    $conn = myConnect();
+    $qr = "
+            SELECT * FROM theloai
+    ";
+    $result = mysqli_query($conn,$qr);
+    return $result;
+}
+
+function LayDanhSachLoaiTin_TheoTheLoai($idTL) {
+    $conn = myConnect();
+    $qr = "
+            SELECT * FROM loaitin
+            WHERE idTL = $idTL
+    ";
+    $result = mysqli_query($conn,$qr);
+    return $result;
+
+}
 ?>

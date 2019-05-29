@@ -1,13 +1,14 @@
-<link rel="stylesheet" type="text/css" href="menu2cap/ddsmoothmenu.css" />
-<link rel="stylesheet" type="text/css" href="menu2cap/ddsmoothmenu-v.css" />
+
+<link rel="stylesheet" type="text/css" href="ddsmoothmenu.css" />
+<link rel="stylesheet" type="text/css" href="ddsmoothmenu-v.css" />
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
-<script type="text/javascript" src="menu2cap/ddsmoothmenu.js">
+<script type="text/javascript" src="ddsmoothmenu.js">
 
 /***********************************************
 * Smooth Navigational Menu- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
 * Please keep this notice intact
-* Visit Dynamic Drive at #/ for full source code
+* Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code
 ***********************************************/
 
 </script>
@@ -33,37 +34,3 @@ ddsmoothmenu.init({
 })
 
 </script>
-<!-- Markup for mobile menu toggler. Hidden by default, only shown when in mobile menu mode -->
-<a class="animateddrawer" id="ddsmoothmenu-mobiletoggle" href="#">
-<span></span>
-</a>
-
-
-<div id="smoothmenu1" class="ddsmoothmenu">
-<ul>
-<li><a href="./">Trang chủ</a></li>
-<?php
-	$cactheloai = LayDanhSachTheloai();
-	while($row = mysqli_fetch_array($cactheloai)){
-?>
-<li><a href="#"><?php echo $row['TenTL'] ?></a>
-  <ul>
-  <?php
-	$cacloaitin = LayDanhSachLoaiTin_TheoTheLoai($row['idTL']) ;
-	while($row2 = mysqli_fetch_array($cacloaitin)){
-  ?>
-  <li><a href="index.php/p=tintrongloai&idlt=<?php echo $row2['idLT'] ?>"><?php echo $row2['Ten'] ?></a></li>
-  <?php 
-  }
-  ?>
-  </ul>
-</li>
-<?php
-	} 
-?>
-
-</ul>
-<br style="clear: left" />
-</div>
-
-
