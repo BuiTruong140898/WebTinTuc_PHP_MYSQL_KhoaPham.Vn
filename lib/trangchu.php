@@ -69,4 +69,15 @@ function LayTenLoaiTin($idLT){
     $tenloaitin = $loaitin['Ten'];
     return $tenloaitin;
 }
+
+function HienQuangCao($vitri) {
+    $conn = myConnect();
+    $qr = "
+            SELECT * FROM quangcao
+            WHERE vitri = $vitri
+            LIMIT 0,3
+    ";
+    $result = mysqli_query($conn, $qr);
+    return $result;
+}
 ?>

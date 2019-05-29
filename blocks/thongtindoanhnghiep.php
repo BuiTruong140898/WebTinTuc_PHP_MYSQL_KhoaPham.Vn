@@ -87,21 +87,16 @@
 
         <!-- Slides Container -->
         <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 1000px; height: 150px; overflow: hidden;">
-            <div><img u="image" src="images/1.png" /></div>
-            <div><img u="image" src="images/2.png" /></div>
-            <div><img u="image" src="images/3.png" /></div>
-            <div><img u="image" src="images/1.png" /></div>
-            <div><img u="image" src="images/2.png" /></div>
-            <div><img u="image" src="images/3.png" /></div>
-            <div><img u="image" src="images/1.png" /></div>
-            <div><img u="image" src="images/2.png" /></div>
-            <div><img u="image" src="images/3.png" /></div>
-            <div><img u="image" src="images/1.png" /></div>
-            <div><img u="image" src="images/2.png" /></div>
-            <div><img u="image" src="images/3.png" /></div>
-            <div><img u="image" src="images/1.png" /></div>
-            <div><img u="image" src="images/2.png" /></div>
-            <div><img u="image" src="images/3.png" /></div>
+            <?php 
+                $bannercuoitrang = HienQuangCao(2);//2 la vi tri quang cao banner
+                while($row = mysqli_fetch_array($bannercuoitrang)){
+            ?>
+            <div><img u="image" src="upload/hinhquangcao/<?php echo $row['urlHinh'] ?>" /></div>
+            <div><img u="image" src="upload/hinhquangcao/<?php echo $row['urlHinh'] ?>" /></div>
+            <div><img u="image" src="upload/hinhquangcao/<?php echo $row['urlHinh'] ?>" /></div>
+            <?php 
+                }
+            ?>
         </div>
         
         <!-- Bullet Navigator Skin Begin -->
