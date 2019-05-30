@@ -37,7 +37,7 @@ function LayTinMoiNhat_TheoLoaiTin_MotTin($idLT) {
     $conn = myConnect();
     $qr = "
             SELECT * FROM tin 
-            where idLT = $idLT
+            WHERE idLT = $idLT
             ORDER BY idTin DESC
             LIMIT 0,1
     ";
@@ -49,7 +49,7 @@ function LayCacTinMoiKhac_TheoLoaiTin($idLT,$sotin) {
     $conn = myConnect();
     $qr = "
             SELECT * FROM tin
-            where idLT = $idLT
+            WHERE idLT = $idLT
             ORDER BY idTin DESC
             LIMIT 1,$sotin
     ";
@@ -104,7 +104,7 @@ function LayTinMoiNhat_TheoTheLoai_MotTin($idTL) {
     $conn = myConnect();
     $qr = "
             SELECT * FROM tin 
-            where idTL = $idTL
+            WHERE idTL = $idTL
             ORDER BY idTin DESC
             LIMIT 0,1
     ";
@@ -116,9 +116,30 @@ function LayCacTinMoiKhac_TheoTheLoai($idTL,$sotin) {
     $conn = myConnect();
     $qr = "
             SELECT * FROM tin
-            where idTL = $idTL
+            WHERE idTL = $idTL
             ORDER BY idTin DESC
             LIMIT 1,$sotin
+    ";
+    $result = mysqli_query($conn, $qr);
+    return $result;
+}
+
+function LayTinMoi_TheoLoai($idLT) {
+    $conn = myConnect();
+    $qr = "
+            SELECT * FROM tin
+            WHERE idTL = $idLT
+            ORDER BY idTin DESC
+    ";
+    $result = mysqli_query($conn, $qr);
+    return $result;
+}
+
+function LayDuongDan_LoaiTin($idLT) {
+    $conn = myConnect();
+    $qr = "
+            SELECT TenTL, Ten FROM theloai, loaitin
+            WHERE  theloai.idTL = loaitin.idTL AND idLT = $idLT
     ";
     $result = mysqli_query($conn, $qr);
     return $result;

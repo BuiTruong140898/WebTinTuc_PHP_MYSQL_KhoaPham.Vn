@@ -52,7 +52,7 @@ ddsmoothmenu.init({
 	$cacloaitin = LayDanhSachLoaiTin_TheoTheLoai($row['idTL']) ;
 	while($row2 = mysqli_fetch_array($cacloaitin)){
   ?>
-  <li><a href="index.php/p=tintrongloai&idlt=<?php echo $row2['idLT'] ?>"><?php echo $row2['Ten'] ?></a></li>
+  <li><a href="index.php?p=tintrongloai&idLT=<?php echo $row2['idLT'] ?>"><?php echo $row2['Ten'] ?></a></li>
   <?php 
   }
   ?>

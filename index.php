@@ -17,7 +17,7 @@
 <body>
 <div id="wrap-vp">
 	<div id="header-vp">
-    	<div id="logo"><img src="images/logo.gif" /></div>
+    	<a href="index.php"><div id="logo"><img src="images/logo.gif" /></div></a>
     </div>
     
     <div>
