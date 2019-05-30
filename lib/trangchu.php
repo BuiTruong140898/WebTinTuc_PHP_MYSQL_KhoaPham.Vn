@@ -156,4 +156,28 @@ function LayDuongDan_LoaiTin($idLT) {
     $result = mysqli_query($conn, $qr);
     return $result;
 }
+
+function LayChiTietTin($idTin) {
+    $conn = myConnect();
+    $qr = "
+            SELECT * FROM Tin
+            WHERE idTin = $idTin
+    ";
+    $result = mysqli_query($conn, $qr);
+    return $result;
+}
+
+function LayTinCungLoai($idLT) {
+    $conn = myConnect();
+    $qr = "
+            SELECT * FROM Tin
+            WHERE idLT = $idLT
+            ORDER BY idTin DESC
+            LIMIT 1,3
+    ";
+    $result = mysqli_query($conn, $qr);
+    return $result;
+}
+
+
 ?>
