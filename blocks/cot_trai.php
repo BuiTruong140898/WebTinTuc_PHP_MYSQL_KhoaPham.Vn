@@ -7,7 +7,7 @@
         <div class="clear"></div>
         <div class="cat-content">
         	<?php 
-            $tinxemnhieunhat = LayTinXemNhieuNhat();
+            $tinxemnhieunhat = LayTinXemNhieuNhat(5);
             while($row_tinxemnhieunhat=mysqli_fetch_array($tinxemnhieunhat)){ 
             ?>
             <div class="col1">

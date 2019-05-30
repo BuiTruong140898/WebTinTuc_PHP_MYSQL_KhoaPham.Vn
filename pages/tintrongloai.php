@@ -1,6 +1,9 @@
 <?php
+    define('sotinmottrang',7);
     $idLT = (isset($_GET['idLT']) ? $_GET['idLT'] : 0);
-    settype($idLT, 'int');   
+    settype($idLT, 'int');
+    $trangso = (isset($_GET['trangso']) ? $_GET['trangso'] : 1);
+    settype($trangso, 'int');
 ?>
 <?php
 $duongdan = LayDuongDan_LoaiTin($idLT);
@@ -8,7 +11,9 @@ $row_duongdan = mysqli_fetch_array($duongdan);
 ?>
 <div>Trangchu>> <?php echo $row_duongdan['TenTL'] ?> >> <?php echo $row_duongdan['Ten'] ?></div>
 <?php
-    $tinmoi = LayTinMoi_TheoLoai($idLT);
+    $from = ($trangso-1)*sotinmottrang;
+    $tinmoi = LayTinMoi_TheoLoai_PhanTrang($idLT, $from, sotinmottrang);
+   // $socactrang = mysqli_num_rows($tinmoi)/$sotintrongmottrang;
     while($row = mysqli_fetch_array($tinmoi)){
 ?>
 <div class="box-cat">
@@ -37,4 +42,15 @@ $row_duongdan = mysqli_fetch_array($duongdan);
 <?php 
     }
 ?>
+<div style="text-align: center">
+    <?php 
+        $tintheoloai = LayTinMoi_TheoLoai($idLT);
+        $sotrang = ceil(mysqli_num_rows($tintheoloai)/sotinmottrang);
+        for($i = 1; $i<=$sotrang; $i++){
+    ?>
+            <a  href="index.php?p=tintrongloai&idLT=<?php echo $idLT ?>&trangso=<?php echo $i ?>"><button <?php echo $i == $trangso ? "style='background: yellow'" : "" ?> type="button" class="btn btn-default"><?php echo $i ?></button></a>
+    <?php
+        }
+    ?>
+</div>
 

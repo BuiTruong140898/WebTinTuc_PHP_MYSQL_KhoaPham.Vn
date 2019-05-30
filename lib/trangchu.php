@@ -22,12 +22,12 @@ function LayTinMoi_HienBenPhai() {
     return $result;
 }
 
-function LayTinXemNhieuNhat() {
+function LayTinXemNhieuNhat($sotin) {
     $conn = myConnect();
     $qr = " 
             SELECT * FROM tin 
             ORDER BY SoLanXem 
-            DESC LIMIT 0,6
+            DESC LIMIT 0,$sotin
     ";
     $result = mysqli_query($conn, $qr);
     return $result;
@@ -128,8 +128,20 @@ function LayTinMoi_TheoLoai($idLT) {
     $conn = myConnect();
     $qr = "
             SELECT * FROM tin
-            WHERE idTL = $idLT
+            WHERE idLT = $idLT
             ORDER BY idTin DESC
+    ";
+    $result = mysqli_query($conn, $qr);
+    return $result;
+}
+
+function LayTinMoi_TheoLoai_Phantrang($idLT, $from, $sotinmottrang) {
+    $conn = myConnect();
+    $qr = "
+            SELECT * FROM tin
+            WHERE idLT = $idLT
+            ORDER BY idTin DESC
+            LIMIT $from ,$sotinmottrang
     ";
     $result = mysqli_query($conn, $qr);
     return $result;

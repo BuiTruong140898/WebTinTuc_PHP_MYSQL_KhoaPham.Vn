@@ -1,7 +1,7 @@
 <!-- box cat -->
 <?php 
-    //Lay cac loai tin tu 1 den 4 de hien thi o cot ben phai
-    for($i=1; $i<=4; $i++)
+    //Lay cac loai tin tu 1 den 3 de hien thi o cot ben phai
+    for($i=1; $i<=3; $i++)
     {
 
     $idLT = $i;
