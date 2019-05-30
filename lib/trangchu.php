@@ -33,7 +33,7 @@ function LayTinXemNhieuNhat() {
     return $result;
 }
 
-function LayTinMoiNhat_TheoLoai_MotTin($idLT) {
+function LayTinMoiNhat_TheoLoaiTin_MotTin($idLT) {
     $conn = myConnect();
     $qr = "
             SELECT * FROM tin 
@@ -45,13 +45,13 @@ function LayTinMoiNhat_TheoLoai_MotTin($idLT) {
     return $result;
 }
 
-function LayCacTinMoiKhac_TheoLoai($idLT) {
+function LayCacTinMoiKhac_TheoLoaiTin($idLT,$sotin) {
     $conn = myConnect();
     $qr = "
             SELECT * FROM tin
             where idLT = $idLT
             ORDER BY idTin DESC
-            LIMIT 1,4
+            LIMIT 1,$sotin
     ";
     $result = mysqli_query($conn, $qr);
     return $result;
@@ -99,5 +99,28 @@ function LayDanhSachLoaiTin_TheoTheLoai($idTL) {
     $result = mysqli_query($conn,$qr);
     return $result;
 
+}
+function LayTinMoiNhat_TheoTheLoai_MotTin($idTL) {
+    $conn = myConnect();
+    $qr = "
+            SELECT * FROM tin 
+            where idTL = $idTL
+            ORDER BY idTin DESC
+            LIMIT 0,1
+    ";
+    $result = mysqli_query($conn, $qr);
+    return $result;
+}
+
+function LayCacTinMoiKhac_TheoTheLoai($idTL,$sotin) {
+    $conn = myConnect();
+    $qr = "
+            SELECT * FROM tin
+            where idTL = $idTL
+            ORDER BY idTin DESC
+            LIMIT 1,$sotin
+    ";
+    $result = mysqli_query($conn, $qr);
+    return $result;
 }
 ?>

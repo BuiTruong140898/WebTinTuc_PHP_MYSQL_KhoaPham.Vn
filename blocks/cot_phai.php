@@ -17,7 +17,7 @@
         	<div class="col1">
             	<div class="news">
                 <?php
-                    $tintheoloai = LayTinMoiNhat_TheoLoai_MotTin($idLT);
+                    $tintheoloai = LayTinMoiNhat_TheoLoaiTin_MotTin($idLT);
                     $row = mysqli_fetch_array($tintheoloai); 
                 ?>
                 <h3 class="title" ><a href="index.php?p=chitiettin&idTin= <?php echo $row['idTin'] ?>"><?php echo $row['TieuDe'] ?> </a></h3>
@@ -31,7 +31,7 @@
             </div>
             <div class="col2">
             <?php 
-                $cactintheoloaikhac = LayCacTinMoiKhac_TheoLoai($idLT);
+                $cactintheoloaikhac = LayCacTinMoiKhac_TheoLoaiTin($idLT, 4);
                 while($row = mysqli_fetch_array($cactintheoloaikhac)){
             ?>
                 <h3 class="tlq"><a href="index.php?p=chitiettin&idTin= <?php echo $row['idTin'] ?>"><?php echo $row['TieuDe'] ?></a></h3>
