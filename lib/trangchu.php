@@ -27,7 +27,7 @@ function LayTinXemNhieuNhat($sotin) {
     $qr = " 
             SELECT * FROM tin 
             ORDER BY SoLanXem 
-            DESC LIMIT 0,$sotin
+            DESC LIMIT 0, $sotin
     ";
     $result = mysqli_query($conn, $qr);
     return $result;
@@ -179,5 +179,23 @@ function LayTinCungLoai($idLT) {
     return $result;
 }
 
+function CapNhatSoLanXemTin($idTin) {
+    $conn = myConnect();
+    $qr = "
+            UPDATE tin set SoLanXem = SoLanXem + 1
+            where idTin = $idTin
+    ";
+    mysqli_query($conn, $qr);
+}
 
+function TimKiem($key) {
+    $conn = myConnect();
+    $qr = "
+            SELECT * FROM tin 
+            WHERE TieuDe LIKE '%$key%'
+            ORDER BY idTin DESC
+    ";
+    $result = mysqli_query($conn, $qr);
+    return $result;
+}
 ?>

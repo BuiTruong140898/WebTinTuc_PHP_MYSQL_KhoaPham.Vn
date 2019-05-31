@@ -1,6 +1,39 @@
-<?php
+<?php 
+session_start();
+?>
+<?php 
     require 'lib/dbCon.php';
     require 'lib/trangchu.php';
+?>
+<!-- kiemtradangnhap -->
+<?php  
+if( isset($_POST['btnLogin']) ) {
+    $userName = $_POST['txtUserName'];
+    $password = md5($_POST['txtPassword']);
+    $qr = "SELECT * FROM Users WHERE Username = '$userName' AND Password = '$password'";
+    $conn = myConnect();
+    $result = mysqli_query($conn, $qr);
+    if( $row = mysqli_fetch_array($result) ) {
+        //dang nhap dung
+        $_SESSION['idUser'] = $row['idUser'];
+        $_SESSION['userName']=$row['Username'];
+        $_SESSION['hoTen']=$row['HoTen'];
+        $_SESSION['idGroup']=$row['idGroup'];
+    }
+    else {
+        echo 'Dang nhap khong thanh cong';
+    }
+}
+?>
+<?php 
+if( isset($_POST['btnDangXuat'])) {
+    unset($_SESSION['idUser']);
+    unset($_SESSION['userName']);
+    unset($_SESSION['hoTen']);
+    unset($_SESSION['idGroup']);
+}
+?>
+<?php
     if( isset($_GET["p"]))
         $p = $_GET["p"];
     else
@@ -66,6 +99,10 @@
                 case 'chitiettin':
                     require "pages/chitiettin.php";
                     break;
+
+                case 'timkiem':
+                    require "pages/ketquatimkiem.php";
+                    break;
                 
                 default:
                     require "pages/trangchu.php";
@@ -76,6 +113,14 @@
         </div>
         <div id="content-right">
 		<!--blocks/cot_phai.php-->
+        <?php   if( !isset($_SESSION['idUser'])) {
+                     require "blocks/formlogin.php";
+                } 
+                else {
+                    require "blocks/formhello.php";
+                }
+
+        ?>
         <?php require "blocks/cot_phai.php" ?>
         </div>
 
@@ -90,9 +135,7 @@
     <div class="clear"></div>
     <div id="footer">
     	<!--blocks/footer.php-->
-        <?php require "blocks/footer.php" ?>
-
-        
+        <?php require "blocks/footer.php" ?>        
         <div class="ft-bot">
             <div class="bot1"><img src="images/logo.gif" /></div>
             <div class="bot2">

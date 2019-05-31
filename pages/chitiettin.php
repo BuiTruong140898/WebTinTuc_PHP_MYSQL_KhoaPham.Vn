@@ -1,6 +1,7 @@
 <?php 
   $idTin = isset($_REQUEST['idTin']) ? $_REQUEST['idTin'] : 1;
   settype($idTin, 'int');
+  CapNhatSoLanXemTin($idTin);
   $tindangxem = LayChiTietTin($idTin);
   $row = mysqli_fetch_array($tindangxem);
 ?>
@@ -20,6 +21,10 @@
 </table>
 <?php echo $row['Content'] ?>
 <!--//noi dung-->
+<!-- SoLanXem -->
+<div>Số lượt xem: <?php echo $row['SoLanXem'] ?>
+</div>
+<!-- //Solanxem -->
 </div>
 <div class="clear"></div>
 <a class="btn_quantam" id="vne-like-anchor-1000000-3023795" href="#" total-like="21"></a>
@@ -50,6 +55,7 @@
     ?>
   </ul>
 </div>
+
 <div class="clear"></div> 
 
 
